@@ -34,3 +34,12 @@
 #floatingTextarea2 {
   height: 7rem;
 }
+
+.accordion-button:not(.collapsed) {
+  background-color: transparent !important;
+  box-shadow: inherit;
+}
+
+button.accordion-button:focus{
+  box-shadow: inherit;
+}

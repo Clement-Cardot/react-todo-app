@@ -23,7 +23,6 @@ export class TaskModel {
 
     public addSubTask(task: TaskModel): void {
         this.subTasks.tasks.push(task);
-        console.log(this.subTasks);
     }
 
     public removeSubTask(task: TaskModel): void {

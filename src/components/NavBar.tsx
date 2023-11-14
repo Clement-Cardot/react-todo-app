@@ -25,14 +25,3 @@ const NavBar : React.FC<Props> = (props: Props) => {
 };
 
 export default NavBar;
-
- {/* <nav classNameName="navbar navbar-expand-lg">
-     <div classNameName="container-fluid">
-         <span classNameName="navbar-brand">✅</span>
-         <ul classNameName="navbar-nav me-auto mb-2 mb-lg-0">
-             <li classNameName="nav-item">
-                 <p>To-Do App</p>
-             </li>
-         </ul>
-     </div>
- </nav> */}

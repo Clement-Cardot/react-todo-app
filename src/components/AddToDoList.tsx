@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { ToDoListModel } from "../models/ToDoList.model";
 import ToDoList from "./ToDoList";
 
@@ -6,11 +6,14 @@ type Props = {
     AddToDoMethod: (toDoList: ToDoListModel) => void;
 }
 
-let newToDoList: ToDoListModel = new ToDoListModel("");
-
 const AddToDoList: React.FC<Props> = (props: Props) => {
 
-    const [change, setChange] = React.useState('');
+    const [newToDoList, setNewToDoList] = React.useState<ToDoListModel>(new ToDoListModel("My To-Do List"));
+
+    const handleSaveClick = () => {
+        props.AddToDoMethod(newToDoList);
+        setNewToDoList(new ToDoListModel("My To-Do List"));
+    }
 
     return (
         <>
@@ -30,7 +33,7 @@ const AddToDoList: React.FC<Props> = (props: Props) => {
             </div>
             <div className="modal-footer">
                 <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" className="btn btn-primary">Save changes</button>
+                <button type="button" className="btn btn-primary" data-bs-dismiss="modal" onClick={handleSaveClick}>Save changes</button>
             </div>
             </div>
         </div>
