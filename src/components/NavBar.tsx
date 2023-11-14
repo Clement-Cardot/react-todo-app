@@ -16,7 +16,7 @@ const NavBar : React.FC<Props> = (props: Props) => {
     }, [mode]);
 
     return (
-        <nav className="navbar navbar-expand-lg mb-3">
+        <nav className="navbar navbar-expand-lg mb-3 ps-5 pe-5">
                 <a className="navbar-brand" href="#">✅</a>
 
                 <ul className="navbar-nav flex-row me-auto">
@@ -35,14 +35,25 @@ const NavBar : React.FC<Props> = (props: Props) => {
                     dark="Dark"
                     light="Light"
                     size="md"
-                    inactiveTrackColor="#e2e8f0"
-                    inactiveTrackColorOnHover="#f8fafc"
-                    inactiveTrackColorOnActive="#cbd5e1"
-                    activeTrackColor="#334155"
-                    activeTrackColorOnHover="#1e293b"
-                    activeTrackColorOnActive="#0f172a"
-                    inactiveThumbColor="#1e293b"
-                    activeThumbColor="#e2e8f0"
+
+                    inactiveTrackColor="#1C2833"
+                    inactiveTrackColorOnHover="#1e293b"
+                    inactiveTrackColorOnActive="#0f172a"
+
+                    inactiveLabelColor="#D5DBDB"
+                    inactiveLabelColorOnHover="#FFFFFF"
+                    inactiveLabelColorOnActive="#FFFFFF"
+
+                    activeTrackColor="#e2e8f0"
+                    activeTrackColorOnHover="#f8fafc"
+                    activeTrackColorOnActive="#cbd5e1"
+
+                    activeLabelColor="#D5DBDB"
+                    activeLabelColorOnHover="#FFFFFF"
+                    activeLabelColorOnActive="#FFFFFF"
+
+                    inactiveThumbColor="#e2e8f0"
+                    activeThumbColor="#1e293b"
                     onChange={(mode) => {
                         setMode(mode);
                     }}
