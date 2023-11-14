@@ -1,5 +1,5 @@
 import React from "react";
-import { TaskModel } from "../core/Task.model";
+import { TaskModel } from "../models/Task.model";
 import ToDoList from "./ToDoList";
 
 type Props = {
@@ -83,9 +83,12 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
                     <div className="card card-body mb-3">
                         {props.task.description}
                     </div>
-                    <div className="card card-body mb-3">
-                        <ToDoList toDoList={props.task.subTasks}/>
-                    </div>
+                    {
+                        (props.task.subTasks.tasks.length > 0) &&
+                        <div className="card card-body mb-3">
+                            <ToDoList toDoList={props.task.subTasks}/>
+                        </div>
+                    }
                 </div>
             </>
             :

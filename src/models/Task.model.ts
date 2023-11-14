@@ -5,7 +5,7 @@ export class TaskModel {
 
     public id: string = uuidv4();
     public title: string;
-    public description: string;
+    public description: string = "";
 
     public color: string = '#ffffff';
     public isDone: boolean = false;
@@ -13,9 +13,8 @@ export class TaskModel {
 
     public subTasks: ToDoListModel = new ToDoListModel('Subtasks');
 
-    public constructor(title: string, description: string){
+    public constructor(title: string){
         this.title = title;
-        this.description = description;
     }
 
     public toggleDone(): void {
