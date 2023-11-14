@@ -43,3 +43,42 @@
 button.accordion-button:focus{
   box-shadow: inherit;
 }
+
+.toggle-wrapper {
+  width: 130px;
+  display: block;
+}
+
+.toggle {
+  height: 65px;
+  width: 130px;
+  background: var(--black);
+  border-radius: 40px;
+  padding: 12px;
+  position: relative;
+  margin: auto;
+  cursor: pointer;
+}
+
+.toggle::before {
+  content: "";
+  display: block;
+  height: 41px;
+  width: 41px;
+  border-radius: 30px;
+  background: var(--white);
+  position: absolute;
+  z-index: 2;
+  transform: translate(0);
+  transition: transform var(--transition);
+}
+
+.toggle.enabled::before {
+  transform: translateX(65px);
+}
+
+.toggle input {
+	position: absolute;
+	top: 0;
+  opacity: 0;
+}
