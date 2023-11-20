@@ -64,8 +64,8 @@
 }
 
 .text-bg-Low {
-  color: #fff!important;
-  background-color: RGBA(var(--bs-primary-rgb),var(--bs-bg-opacity,1))!important;
+  color: #2ECC71!important;
+  background-color: #D5F5E3!important;
 }
 
 .newSpan {
