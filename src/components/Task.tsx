@@ -5,6 +5,7 @@ import ToDoList from "./ToDoList";
 type Props = {
     task: TaskModel;
     removeAction: (element: TaskModel) => void;
+    autoSave: () => void;
 }
 
 const ToDoElement: React.FC<Props> = (props: Props) => {
@@ -23,18 +24,21 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
         let value:boolean = event.target.checked;
         props.task.isDone = value;
         setChangeState(changeState + 1);
+        props.autoSave();
     }
 
     const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
         let value:string = event.target.value;
         props.task.title = value;
         setChangeState(changeState + 1);
+        props.autoSave();
     }
 
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         let value:string = event.target.value;
         props.task.description = value;
         setChangeState(changeState + 1);
+        props.autoSave();
     }
 
     const removeElement = () => {
@@ -86,7 +90,7 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
                     {
                         (props.task.subTasks.tasks.length > 0) &&
                         <div className="card card-body mb-3">
-                            <ToDoList toDoList={props.task.subTasks}/>
+                            {/* TODO: add nested lists <ToDoList toDoList={props.task.subTasks}/>  */}
                         </div>
                     }
                 </div>

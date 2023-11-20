@@ -7,6 +7,7 @@ import { ToDoListModel } from "../models/ToDoList.model";
 type Props = {
     toDoList: ToDoListModel;
     removeToDoList?: (toDoList: ToDoListModel) => void | undefined;
+    autoSave: (toDoListToSave: ToDoListModel) => void;
 }
 
 const ToDoList: React.FC<Props> = (props: Props) => {
@@ -20,11 +21,13 @@ const ToDoList: React.FC<Props> = (props: Props) => {
         let index = props.toDoList.tasks.indexOf(task);
         props.toDoList.tasks.splice(index, 1);
         setChange(change + 1);
+        props.autoSave(props.toDoList);
     }
 
     const addToList = (task: TaskModel) => {
         props.toDoList.tasks.push(task);
         setChange(change + 1);
+        props.autoSave(props.toDoList);
     }
 
     const toogleEditMode = () => {
@@ -37,6 +40,11 @@ const ToDoList: React.FC<Props> = (props: Props) => {
             props.removeToDoList(props.toDoList);
         }
     }
+
+    const autoSave = () => {
+        setChange(change + 1);
+        props.autoSave(props.toDoList);
+    };
 
     const submitNewTitle = (event: React.FocusEvent<HTMLInputElement>) => {
         if(event.target.value == ""){
@@ -51,6 +59,14 @@ const ToDoList: React.FC<Props> = (props: Props) => {
         }
     }
 
+    const isAllListDone = () => {
+        let isDone = true;
+        props.toDoList.tasks.forEach((task) => {
+            if(!task.isDone) isDone = false;
+        });
+        return isDone;
+    }
+
     return (
         <div className="accordion mb-4 todolist">
             <div className="accordion-item">
@@ -60,10 +76,17 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                     </button>
                     <div className="d-flex justify-content-between w-100 me-4">
                         {
-                            editMode == 0 ?
-                            <h5 className="mt-2">{props.toDoList.title}</h5>
+                            editMode === 1 ?
+                                <input className="form-control w-50" type="text" defaultValue={props.toDoList.title} onBlur={submitNewTitle} />
                             :
-                            <input className="form-control w-50" type="text" defaultValue={props.toDoList.title} onBlur={submitNewTitle}/>
+                                <h5 className="mt-2">
+                                {
+                                    isAllListDone() ?
+                                        <del>{props.toDoList.title}</del>
+                                    :
+                                        props.toDoList.title
+                                }
+                                </h5>
                         }
                         <div>
                             <button type="button" className="btn" onClick={toogleEditMode}>
@@ -90,7 +113,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                             {
                                 props.toDoList.tasks.map((task) => (
                                     <li className="list-group-item" key={task.id}>
-                                        <Task task={task} removeAction={removeFromList}/>
+                                        <Task task={task} removeAction={removeFromList} autoSave={autoSave}/>
                                     </li>
                                 )
                                 )

@@ -28,7 +28,17 @@ function App() {
   }
 
   const removeToDoList = (toDoListToDelete: ToDoListModel) => {
-    setToDoLists(toDoLists?.filter((toDoList) => toDoList.id != toDoListToDelete.id));
+    setToDoLists(toDoLists?.filter((toDoList) => toDoList.id !== toDoListToDelete.id));
+    console.log(toDoLists);
+  };
+
+  const autoSave = (toDoListToSave: ToDoListModel) => {
+    let index = toDoLists?.findIndex((toDoList) => toDoList.id === toDoListToSave.id);
+    if(index !== undefined && index !== -1){
+      let newToDoLists = [...(toDoLists || [])]; // Add null check here
+      newToDoLists[index] = toDoListToSave;
+      setToDoLists(newToDoLists);
+    }
     console.log(toDoLists);
   };
   
@@ -39,7 +49,7 @@ function App() {
       <div className='body'>
         {
           toDoLists?.map((toDoList) => (
-            <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList}/>
+            <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList} autoSave={autoSave}/>
           ))
         }
       </div>
