@@ -7,7 +7,7 @@ import { ToDoListModel } from "../models/ToDoList.model";
 type Props = {
     toDoList: ToDoListModel;
     removeToDoList?: (toDoList: ToDoListModel) => void | undefined;
-    autoSave: (toDoListToSave: ToDoListModel) => void;
+    autoSave?: (toDoListToSave: ToDoListModel) => void;
 }
 
 const ToDoList: React.FC<Props> = (props: Props) => {
@@ -21,13 +21,17 @@ const ToDoList: React.FC<Props> = (props: Props) => {
         let index = props.toDoList.tasks.indexOf(task);
         props.toDoList.tasks.splice(index, 1);
         setChange(change + 1);
-        props.autoSave(props.toDoList);
+        if (props.autoSave) {
+            props.autoSave(props.toDoList);
+        }
     }
 
     const addToList = (task: TaskModel) => {
         props.toDoList.tasks.push(task);
         setChange(change + 1);
-        props.autoSave(props.toDoList);
+        if (props.autoSave) {
+            props.autoSave(props.toDoList);
+        }
     }
 
     const toogleEditMode = () => {
@@ -43,7 +47,9 @@ const ToDoList: React.FC<Props> = (props: Props) => {
 
     const autoSave = () => {
         setChange(change + 1);
-        props.autoSave(props.toDoList);
+        if (props.autoSave) {
+            props.autoSave(props.toDoList);
+        }
     };
 
     const submitNewTitle = (event: React.FocusEvent<HTMLInputElement>) => {

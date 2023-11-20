@@ -1,6 +1,5 @@
 import React from "react";
 import { TaskModel } from "../models/Task.model";
-import ToDoList from "./ToDoList";
 
 type Props = {
     task: TaskModel;

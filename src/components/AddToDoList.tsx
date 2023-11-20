@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { ToDoListModel } from "../models/ToDoList.model";
 import ToDoList from "./ToDoList";
 
