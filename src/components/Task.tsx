@@ -43,6 +43,11 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
     const removeElement = () => {
         props.removeAction(props.task);
     }
+
+    const getDescription = (): string => {
+        if(props.task.description == "") return "No comments";
+        return props.task.description;
+    };
     
     return (
         <div className="d-flex flex-column">
@@ -84,7 +89,7 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
 
                 <div className="collapse mb-3" id={elementcollapseId}>
                     <div className="card card-body mb-3">
-                        {props.task.description}
+                        {getDescription()}
                     </div>
                     {
                         (props.task.subTasks.tasks.length > 0) &&
