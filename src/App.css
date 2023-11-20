@@ -53,6 +53,35 @@
   box-shadow: 0 0 0 0.25rem rgba(13, 253, 53, 0.25);
 }
 
+.text-bg-High {
+  color: #B03A2E!important;
+  background-color: #FADBD8!important;
+}
+
+.text-bg-Medium {
+  color: #E67E22!important;
+  background-color: #FDEBD0!important;
+}
+
+.text-bg-Low {
+  color: #fff!important;
+  background-color: RGBA(var(--bs-primary-rgb),var(--bs-bg-opacity,1))!important;
+}
+
+.newSpan {
+  padding: 0!important;
+}
+
+span {
+  margin: 0 0.2rem;
+}
+
+.spanDiv {
+  width: 3rem;
+  display: flex;
+  justify-content: center
+}
+
 /* ToDoList */
 
 .todolist {
@@ -71,6 +100,8 @@
 	font: inherit;
 	cursor: pointer;
 	outline: inherit;
+  display: flex;
+  min-width: 5rem;
 }
 
 #floatingTextarea2 {

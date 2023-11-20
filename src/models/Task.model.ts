@@ -1,5 +1,6 @@
 import {v4 as uuidv4} from 'uuid';
 import { ToDoListModel } from './ToDoList.model';
+import { Tag } from './Tag.model';
 
 export class TaskModel {
 
@@ -10,6 +11,9 @@ export class TaskModel {
     public color: string = '#ffffff';
     public isDone: boolean = false;
     public date: Date = new Date();
+
+    public priority: "High" | "Medium" | "Low" | null = null;
+    public tag: Tag | null = null;
 
     public subTasks: ToDoListModel = new ToDoListModel('Subtasks');
 
