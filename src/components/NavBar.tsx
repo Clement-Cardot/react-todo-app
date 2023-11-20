@@ -21,7 +21,7 @@ const NavBar : React.FC<Props> = (props: Props) => {
 
                 <ul className="navbar-nav flex-row me-auto">
                     <li className="nav-item me-3">
-                        <a className="nav-link active" aria-current="page" href="#">To-Do App</a>
+                        <a className="nav-link" aria-current="page" href="#">To-Do App</a>
                     </li>
                     <li className="nav-item">
                         <a className="nav-link" href="#">Menu Item 1</a>

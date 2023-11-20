@@ -1,3 +1,33 @@
+/* NavBar */
+
+.navbar {
+  background-color: #2E4053;
+  color: white;
+}
+
+.nav-item .nav-link{
+  color: white;
+}
+
+/* Body */
+
+[data-bs-theme="dark"] body {
+    background-color: #141414;
+}
+
+[data-bs-theme="light"] body {
+    background-color: #F2F3F4;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 3rem 8rem;
+}
+
+/* Tools buttons */
+
 .bi {
   color: #5D6D7E
 }
@@ -13,6 +43,16 @@
 .bi-plus-square-fill:hover {
   color: #28a745;
 }
+
+/* ToDoList */
+
+.todolist {
+  width: 100%;
+  max-width: 50rem;
+  min-width: 25rem;
+}
+
+/* ToDoElement */
 
 .ToDoElementTitle {
   background: none;
@@ -37,6 +77,3 @@ button.accordion-button:focus{
   box-shadow: inherit;
 }
 
-.navbar {
-  background-color: #2E4053;
-}

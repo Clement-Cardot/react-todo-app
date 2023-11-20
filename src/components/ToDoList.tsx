@@ -52,7 +52,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
     }
 
     return (
-        <div className="accordion mb-4">
+        <div className="accordion mb-4 todolist">
             <div className="accordion-item">
                 <div className="accordion-header d-flex align-items-center">
                     <button className="accordion-button w-auto me-2" type="button" data-bs-toggle="collapse" data-bs-target={"#"+elementcollapseId} aria-expanded="true" aria-controls={elementcollapseId}>

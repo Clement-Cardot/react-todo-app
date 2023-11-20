@@ -36,11 +36,13 @@ function App() {
     <>
       <NavBar AddToDoMethod={addToDoList}/>
 
-      {
-        toDoLists?.map((toDoList) => (
-          <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList}/>
-        ))
-      }
+      <div className='body'>
+        {
+          toDoLists?.map((toDoList) => (
+            <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList}/>
+          ))
+        }
+      </div>
       
     </>
   )
