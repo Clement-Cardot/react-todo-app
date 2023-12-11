@@ -95,8 +95,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                                             props.toDoList.title
                                     }
                                     </h5>
-                                    <ProgressSpan nbTasks={props.toDoList.tasks.length} nbTasksDone={props.toDoList.tasks.filter((task) => task.isDone).length}>
-                                    </ProgressSpan>
+                                    <ProgressSpan nbTasks={props.toDoList.tasks.length} nbTasksDone={props.toDoList.tasks.filter((task) => task.isDone).length}/>
                                 </>
                         }
                         <div>
