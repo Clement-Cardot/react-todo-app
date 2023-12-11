@@ -3,6 +3,7 @@ import { TaskModel } from "../models/Task.model";
 import Task from "./Task";
 import AddToDo from "./AddTask";
 import { ToDoListModel } from "../models/ToDoList.model";
+import ProgressSpan from "./ProgressSpan";
 
 type Props = {
     toDoList: ToDoListModel;
@@ -85,14 +86,18 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                             editMode === 1 ?
                                 <input className="form-control w-50" type="text" defaultValue={props.toDoList.title} onBlur={submitNewTitle} />
                             :
-                                <h5 className="mt-2">
-                                {
-                                    isAllListDone() ?
-                                        <del>{props.toDoList.title}</del>
-                                    :
-                                        props.toDoList.title
-                                }
-                                </h5>
+                                <>
+                                    <h5 className="mt-2">
+                                    {
+                                        isAllListDone() ?
+                                            <del>{props.toDoList.title}</del>
+                                        :
+                                            props.toDoList.title
+                                    }
+                                    </h5>
+                                    <ProgressSpan nbTasks={props.toDoList.tasks.length} nbTasksDone={props.toDoList.tasks.filter((task) => task.isDone).length}>
+                                    </ProgressSpan>
+                                </>
                         }
                         <div>
                             <button type="button" className="btn" onClick={toogleEditMode}>

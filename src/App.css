@@ -74,51 +74,6 @@
   background-color: #dddddd!important;
 }
 
-.text-bg-red {
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
-.text-bg-orange {
-  color: #E67E22!important;
-  background-color: #FDEBD0!important;
-}
-
-.text-bg-green {
-  color: #2ECC71!important;
-  background-color: #D5F5E3!important;
-}
-
-.text-bg-blue { /* TODO */
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
-.text-bg-yellow { /* TODO */
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
-.text-bg-purple { /* TODO */
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
-.text-bg-grey { /* TODO */
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
-.text-bg-black { /* TODO */
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
-.text-bg-white { /* TODO */
-  color: #B03A2E!important;
-  background-color: #FADBD8!important;
-}
-
 .tag {
   width: 5rem!important;
 }
