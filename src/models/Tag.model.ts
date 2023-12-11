@@ -4,10 +4,12 @@ export class Tag {
 
     public id: string = uuidv4();
     public name: string;
-    public color: string;
+    public textColor: string;
+    public backgroundColor: string;
 
-    public constructor(name: string, color: string){
+    public constructor(name: string, backgroundColor: string, textColor: string){
         this.name = name;
-        this.color = color;
+        this.backgroundColor = backgroundColor;
+        this.textColor = textColor;
     }
 }

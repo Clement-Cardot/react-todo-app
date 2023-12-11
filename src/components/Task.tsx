@@ -1,6 +1,10 @@
 import React from "react";
 import { TaskModel } from "../models/Task.model";
 
+import { Tag } from "../models/Tag.model";
+import PrioritySelector from "./PrioritySelector";
+import TagSelector from "./TagSelector";
+
 type Props = {
     task: TaskModel;
     removeAction: (element: TaskModel) => void;
@@ -48,6 +52,18 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
         if(props.task.description == "") return "No comments";
         return props.task.description;
     };
+
+    const setPriority = (priority: "High" | "Medium" | "Low" | null) => {
+        props.task.priority = priority;
+        setChangeState(changeState + 1);
+        props.autoSave();
+    };
+
+    const setTag = (tag: Tag | null) => {
+        props.task.tag = tag;
+        setChangeState(changeState + 1);
+        props.autoSave();
+    };
     
     return (
         <div className="d-flex flex-column">
@@ -56,7 +72,7 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
             editMode == 0 ?
             <>
                 <div className="d-flex justify-content-between">
-                    <div className="d-flex align-items-center">
+                    <div className="d-flex align-items-center gap-2">
                         <input className="form-check-input me-3" type="checkbox" defaultChecked={props.task.isDone} onChange={handleCheckChange}/>
 
                         <button className="ToDoElementTitle" type="button" data-bs-toggle="collapse" data-bs-target={"#"+elementcollapseId} aria-expanded="false" aria-controls={elementcollapseId}>
@@ -68,48 +84,9 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
                             }
                         </button>
 
-                        <div className="spanDiv dropdown-center">
-                            {
-                                props.task.priority ?
-                                    <span className={"btn badge rounded-pill dropdown-toggle text-bg-"+props.task.priority} data-bs-toggle="dropdown" aria-expanded="false"> 
-                                        {props.task.priority}
-                                    </span>
-                                :
-                                    <span className={"btn badge rounded-circle newSpan"} data-bs-toggle="dropdown" aria-expanded="false">
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                        </svg>
-                                    </span>
-                            }
-                            <ul className="dropdown-menu">
-                                <li><span className={"btn badge rounded-pill text-bg-High"}> 
-                                        High
-                                    </span></li>
-                                <li><span className={"btn badge rounded-pill text-bg-Medium"}> 
-                                        Medium
-                                    </span></li>
-                                <li><span className={"btn badge rounded-pill text-bg-Low"}> 
-                                        Low
-                                    </span></li>
-                            </ul>
-                        </div>
+                        <PrioritySelector actualPriority={props.task.priority} setPriority={setPriority}/>
 
-                        <div className="spanDiv">
-                            {
-                                props.task.tag ?
-                                    <span className={"btn badge rounded-pill text-bg-"+props.task.tag.color} onClick={()=> {}}> 
-                                        {props.task.tag.name}
-                                    </span>
-                                :
-                                    <span className={"btn badge rounded-circle newSpan"} onClick={()=> {}}>
-                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" className="bi bi-plus-circle" viewBox="0 0 16 16">
-                                            <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-                                            <path d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4z"/>
-                                        </svg>
-                                    </span>
-                            }
-                        </div>
+                        <TagSelector actualTag={props.task.tag} setTag={setTag}/>
 
                     </div>
                     

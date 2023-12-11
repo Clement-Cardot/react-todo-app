@@ -10,7 +10,7 @@ function App() {
 
   useEffect(() => {
     if (!toDoLists) {
-      let data = localStorage.getItem("data");
+      let data = localStorage.getItem("toDoLists");
       if (data) {
         let parsedData = JSON.parse(data);
         setToDoLists(parsedData as Array<ToDoListModel>);
@@ -18,7 +18,7 @@ function App() {
       else setToDoLists([]);
     }
     else {
-      localStorage.setItem("data", JSON.stringify(toDoLists));
+      localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
     }
   }, [toDoLists]);
 
