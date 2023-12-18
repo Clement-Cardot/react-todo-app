@@ -123,6 +123,10 @@ span {
   box-shadow: inherit;
 }
 
+.accordion-body {
+  padding: 0 1rem 1rem 1rem;
+}
+
 button.accordion-button:focus{
   box-shadow: inherit;
 }
@@ -130,4 +134,33 @@ button.accordion-button:focus{
 .dropdown-menu {
   padding: 0.4rem;
   --bs-dropdown-min-width: 0px!important;
+}
+
+/* KanBan */
+.kanban {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+}
+
+.quarter {
+  height: 100%;
+  width: 25%;
+  float: left;
+}
+
+#backlog {
+  background-color: #e96255;
+}
+
+#in-progress {
+  background-color: #e29118;
+}
+
+#to-check {
+  background-color: #44e68a;
+}
+
+#done {
+  background-color: #4297d3;
 }

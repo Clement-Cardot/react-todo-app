@@ -1,7 +1,5 @@
-import './App.css';
-import ToDoList from './components/ToDoList';
-import { ToDoListModel } from './models/ToDoList.model';
-import NavBar from './components/NavBar';
+import ToDoList from '../components/ToDoList';
+import { ToDoListModel } from '../models/ToDoList.model';
 import React, { useEffect } from 'react';
 
 function App() {
@@ -43,18 +41,13 @@ function App() {
   };
   
   return (
-    <>
-      <NavBar AddToDoMethod={addToDoList}/>
-
-      <div className='body'>
-        {
-          toDoLists?.map((toDoList) => (
-            <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList} autoSave={autoSave}/>
-          ))
-        }
-      </div>
-      
-    </>
+    <div className='body'>
+      {
+        toDoLists?.map((toDoList) => (
+          <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList} autoSave={autoSave}/>
+        ))
+      }
+    </div>
   )
 }
 

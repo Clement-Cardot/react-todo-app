@@ -137,7 +137,7 @@ const TagSelector: React.FC<Props> = (props: Props) => {
                         
                     </Form>
                     <div className="d-flex justify-content-center align-items-baseline gap-3">
-                        <p>Example :</p>
+                        <p>Render :</p>
                         <span className="badge rounded-pill tag" style={{backgroundColor: tagBackgroundColor, color: tagTextColor}}>
                             {tagName}
                         </span>

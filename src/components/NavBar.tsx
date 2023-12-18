@@ -3,13 +3,31 @@ import { ToDoListModel } from "../models/ToDoList.model";
 import AddToDoList from "./AddToDoList";
 import React, { useEffect } from "react";
 
-type Props = {
-    AddToDoMethod: (toDoList: ToDoListModel) => void;
-};
 
-const NavBar : React.FC<Props> = (props: Props) => {
+const NavBar : React.FC = () => {
 
     const [mode, setMode] = React.useState<Mode>('light');
+
+    const [toDoLists, setToDoLists] = React.useState<Array<ToDoListModel>>();
+
+    useEffect(() => {
+        if (!toDoLists) {
+        let data = localStorage.getItem("toDoLists");
+        if (data) {
+            let parsedData = JSON.parse(data);
+            setToDoLists(parsedData as Array<ToDoListModel>);
+        }
+        else setToDoLists([]);
+        }
+        else {
+        localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
+        }
+    }, [toDoLists]);
+
+    const addToDoList = (newToDoList: ToDoListModel) => {
+        setToDoLists(toDoLists?.concat(newToDoList));
+        console.log(toDoLists);
+    }
 
     useEffect(() => {
         document.documentElement.setAttribute('data-bs-theme', mode)
@@ -21,14 +39,14 @@ const NavBar : React.FC<Props> = (props: Props) => {
 
                 <ul className="navbar-nav flex-row me-auto">
                     <li className="nav-item me-3">
-                        <a className="nav-link" aria-current="page" href="#">Donify</a>
+                        <a className="nav-link" aria-current="page" href="/">Donify</a>
                     </li>
-                    {/* TODO: Add feature in menu ? <li className="nav-item">
-                        <a className="nav-link" href="#">Menu Item 1</a>
-                    </li> */}
+                    <li className="nav-item">
+                        <a className="nav-link" href="/kanban">KanBan</a>
+                    </li>
                 </ul>
 
-                <AddToDoList AddToDoMethod={props.AddToDoMethod}/>
+                <AddToDoList AddToDoMethod={addToDoList}/>
 
                 <DarkModeToggle
                     mode={mode}

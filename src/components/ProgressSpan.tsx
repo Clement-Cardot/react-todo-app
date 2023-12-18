@@ -11,7 +11,7 @@ type Props = {
 const ProgressSpan: React.FC<Props> = (props: Props) => {
 
     return (
-        <div style={{width: 50, height: 50}}>
+        <div style={{width: 40, height: 40}}>
             <CircularProgressbar 
                 maxValue={1} 
                 value={props.nbTasksDone / props.nbTasks} 

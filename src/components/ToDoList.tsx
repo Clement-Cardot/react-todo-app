@@ -86,7 +86,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                             editMode === 1 ?
                                 <input className="form-control w-50" type="text" defaultValue={props.toDoList.title} onBlur={submitNewTitle} />
                             :
-                                <>
+                                <div className="d-flex gap-3">
                                     <h5 className="mt-2">
                                     {
                                         isAllListDone() ?
@@ -96,7 +96,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                                     }
                                     </h5>
                                     <ProgressSpan nbTasks={props.toDoList.tasks.length} nbTasksDone={props.toDoList.tasks.filter((task) => task.isDone).length}/>
-                                </>
+                                </div>
                         }
                         <div>
                             <button type="button" className="btn" onClick={toogleEditMode}>

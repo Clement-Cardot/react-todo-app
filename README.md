@@ -29,7 +29,6 @@ If you are developing a production application, we recommend updating the config
 
 TODO :
 - reduct buttons or right click menu ?
-- progression bar round list
 - date
 - page par tache
 - KANBAN ?
