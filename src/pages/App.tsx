@@ -20,10 +20,10 @@ function App() {
     }
   }, [toDoLists]);
 
-  const addToDoList = (newToDoList: ToDoListModel) => {
-    setToDoLists(toDoLists?.concat(newToDoList));
-    console.log(toDoLists);
-  }
+  // const addToDoList = (newToDoList: ToDoListModel) => {
+  //   setToDoLists(toDoLists?.concat(newToDoList));
+  //   console.log(toDoLists);
+  // }
 
   const removeToDoList = (toDoListToDelete: ToDoListModel) => {
     setToDoLists(toDoLists?.filter((toDoList) => toDoList.id !== toDoListToDelete.id));
