@@ -31,5 +31,4 @@ TODO :
 - reduct buttons or right click menu ?
 - date
 - page par tache
-- KANBAN ?
 - animation ?
