@@ -25,7 +25,7 @@ const TaskCard : React.FC<Props> = (props: Props) => {
     };
 
     return (
-        <div className="card">
+        <div className="card m-2">
             <div className="card-body">
                 <h5 className="card-title">{props.task.title}</h5>
                 <PrioritySelector actualPriority={props.task.priority} setPriority={setPriority}/>

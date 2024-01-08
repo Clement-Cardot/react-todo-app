@@ -9,7 +9,7 @@ export class TaskModel {
     public description: string = "";
 
     public color: string = '#ffffff';
-    public status: "backlog" | "in-progress" | "to-check" | "done" = "backlog";
+    public status: "todo" | "in-progress" | "testing" | "done" = "todo";
     public isDone: boolean = false;
     public date: Date = new Date();
 

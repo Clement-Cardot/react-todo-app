@@ -139,8 +139,9 @@ button.accordion-button:focus{
 /* KanBan */
 .kanban {
   width: 100%;
-  height: 80vh;
+  height: 65vh;
   display: flex;
+  flex-direction: row;
 }
 
 .quarter {
@@ -149,18 +150,18 @@ button.accordion-button:focus{
   float: left;
 }
 
-#backlog {
-  background-color: #e96255;
+#todo {
+  color: #e96255;
 }
 
 #in-progress {
-  background-color: #e29118;
+  color: #e29118;
 }
 
-#to-check {
-  background-color: #44e68a;
+#testing {
+  color: #44e68a;
 }
 
 #done {
-  background-color: #4297d3;
+  color: #4297d3;
 }
