@@ -5,6 +5,7 @@ import { Tag } from "../models/Tag.model";
 import PrioritySelector from "./PrioritySelector";
 import TagSelector from "./TagSelector";
 import KanbanSelector from "./KanbanSelector";
+import { Link } from "react-router-dom";
 
 type Props = {
     task: TaskModel;
@@ -75,6 +76,8 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
 
     const setStatus = (status: "todo" | "in-progress" | "testing" | "done") => {
         props.task.status = status;
+        if (status == "done") props.task.isDone = true;
+        else props.task.isDone = false;
         setChangeState(changeState + 1);
         props.autoSave();
     }
@@ -90,19 +93,20 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
             
         {
             editMode == 0 ?
-            <>
                 <div className="d-flex justify-content-between">
                     <div className="d-flex align-items-center gap-2">
                         <input className="form-check-input me-3" type="checkbox" defaultChecked={props.task.isDone} onChange={handleCheckChange}/>
 
-                        <button className="ToDoElementTitle" type="button" data-bs-toggle="collapse" data-bs-target={"#"+elementcollapseId} aria-expanded="false" aria-controls={elementcollapseId}>
-                            {
-                                props.task.isDone ?
-                                <del>{props.task.title}</del>
-                                :
-                                props.task.title
-                            }
-                        </button>
+                        <a className="no-css" href={"/task/" + props.task.id}>
+                            <button className="ToDoElementTitle" type="button">
+                                {
+                                    props.task.isDone ?
+                                    <del>{props.task.title}</del>
+                                    :
+                                    props.task.title
+                                }
+                            </button>
+                        </a>
 
                         <KanbanSelector actualStatus={props.task.status} setStatus={setStatus}/>
 
@@ -126,22 +130,7 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
                             </svg>
                         </button>
                     </div>
-                    
-
                 </div>
-
-                <div className="collapse mb-3" id={elementcollapseId}>
-                    <div className="card card-body mb-3">
-                        {getDescription()}
-                    </div>
-                    {
-                        (props.task.subTasks.tasks.length > 0) &&
-                        <div className="card card-body mb-3">
-                            {/* TODO: add nested lists <ToDoList toDoList={props.task.subTasks}/>  */}
-                        </div>
-                    }
-                </div>
-            </>
             :
             <>
                 <div className="form-floating mb-3">

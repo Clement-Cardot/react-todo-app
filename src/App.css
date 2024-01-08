@@ -189,3 +189,7 @@ button.accordion-button:focus{
 .hidden {
   visibility: hidden;
 }
+
+.no-css {
+  all: unset;
+}

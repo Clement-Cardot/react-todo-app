@@ -8,6 +8,7 @@ import {
 import './index.css'
 import './App.css'
 import NavBar from './components/NavBar.tsx';
+import TaskPage from './pages/TaskPage.tsx';
 
 const router = createBrowserRouter([
   {
@@ -17,6 +18,10 @@ const router = createBrowserRouter([
   {
     path: "/kanban",
     element: <Kanban />,
+  },
+  {
+    path: "/task/:id",
+    element: <TaskPage />,
   },
 ]);
 
