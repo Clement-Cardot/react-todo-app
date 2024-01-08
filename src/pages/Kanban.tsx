@@ -1,4 +1,4 @@
-import React, { ChangeEvent, FormEvent, FormEventHandler, useEffect } from "react";
+import React, { ChangeEvent, useEffect } from "react";
 import { ToDoListModel } from "../models/ToDoList.model";
 import TaskCard from "../components/TaskCard";
 import { DragDropContext, Draggable, Droppable } from 'react-beautiful-dnd';
@@ -65,6 +65,9 @@ function Kanban() {
         
         if (tasks === undefined) return;
         tasks[index].status = destination;
+        
+        if (destination === "done") tasks[index].isDone = true;
+        else tasks[index].isDone = false;
 
         autoSave(toDoListToSave);
       };

@@ -154,14 +154,38 @@ button.accordion-button:focus{
   color: #e96255;
 }
 
+.todo{
+  color: #EA4131;
+  background-color: #FFD8D4;
+}
+
 #in-progress {
   color: #e29118;
+}
+
+.in-progress {
+  color: #E38A05;
+  background-color: #FFE5BF;
 }
 
 #testing {
   color: #44e68a;
 }
 
+.testing {
+  color: #0DE56A;
+  background-color: #C4FFDE;
+}
+
 #done {
   color: #4297d3;
+}
+
+.done {
+  color: #0D80D2;
+  background-color: #CAE9FF;
+}
+
+.hidden {
+  visibility: hidden;
 }
