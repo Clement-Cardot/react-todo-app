@@ -28,34 +28,46 @@ npm run dev
 npm run build
 ```
 
-## Features
-### To-Do List View
+# Features
+## To-Do Lists
+A To-Do List is a collection of tasks with a title. 
+
+### Features :
 - Create lists with or without tasks
-- Add task to a list
-- Delete task from a list
-- Delete a list
-- Edit a list
-- Edit a task
+- Remove a list
+- Change the title of a list
+
+## Tasks
+A task is a collection of properties:
+- Title
+- Description
+- Kanban tag (To Do, In Progress, Testing, Done)
+- Priority tag (Low, Medium, High)
+- Custom Tag
+
+### Features :
+- Edit the title of a task
 - Mark a task as done
 - Mark a task as undone
 - Change the priority tag of a task
-- Add or change the tag of a task
-- Add a new tag
+- Add or change the custom tag of a task
 - Change the KanBan tag of a task
 - Open the task details page
 
-### Kanban Board View
-- Select the To-Do list to display in the Kanban board
-- Drag and drop tasks between Kanban columns (To Do, In Progress, Testing, Done)
-- Change the priority tag of a task
-- Add or change the tag of a task
-- Open the task details page
+## Custom Tags
+A custom tag is a tag that can be added to a task.
+It has a name, a background color and a text color.
 
-### Task Details View
-- Edit task's Kanban tag, priority tag, tag
-- Change task's description
+### Features :
+- Create custom tags
+
+## Views
+- To-Do List View
+- Kanban Board View
+- Task Details View
 
 ## Improvements
 - Make the Light/Dark mode property persistent
 - Add a search bar to the To-Do list view
 - align tags in the To-Do list view
+- Allow the user to delete a custom tag
