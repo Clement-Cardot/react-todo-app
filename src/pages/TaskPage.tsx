@@ -54,13 +54,6 @@ function TaskPage() {
         save(task!);
     }
 
-    const handleTitleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-        let value:string = event.target.value;
-        task!.title = value;
-        setChangeState(changeState + 1);
-        save(task!);
-    }
-
     const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
         let value:string = event.target.value;
         task!.description = value;

@@ -28,7 +28,7 @@ function Kanban() {
     const autoSave = (toDoListToSave: ToDoListModel) => {
         let index = toDoLists?.findIndex((toDoList) => toDoList.id === toDoListToSave.id);
         if(index !== undefined && index !== -1){
-        let newToDoLists = [...(toDoLists || [])]; // Add null check here
+        let newToDoLists = [...(toDoLists ?? [])]; // Add null check here
         newToDoLists[index] = toDoListToSave;
         setToDoLists(newToDoLists);
         }
@@ -48,14 +48,6 @@ function Kanban() {
         });
         
     };
-
-    // const reorder = (list: Array<ToDoListModel>, startIndex: number, endIndex: number) => {
-    //     const result = Array.from(list);
-    //     const [removed] = result.splice(startIndex, 1);
-    //     result.splice(endIndex, 0, removed);
-      
-    //     return result;
-    // };
 
     const move = (source: "todo" | "in-progress" | "testing" | "done", index: number, destination: "todo" | "in-progress" | "testing" | "done") => {
 
@@ -83,13 +75,7 @@ function Kanban() {
         const sIndex = source.index;
         const dList = destination.droppableId;
 
-        if (sList === dList) {
-            // const items = reorder(state[sInd], source.index, destination.index);
-            // const newState = [...state];
-            // newState[sInd] = items;
-            // setState(newState);
-        } 
-        else {
+        if (sList !== dList) {
             console.log(source, dList);
             move(sList, sIndex, dList);
         }

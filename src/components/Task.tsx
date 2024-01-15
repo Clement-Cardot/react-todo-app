@@ -26,8 +26,6 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
         setIsHovering(false);
     };
 
-    const elementcollapseId = "collapse" + String(props.task.id); 
-
     const toogleEditMode = () => {
         if(editMode == 0) setEditMode(1);
         else setEditMode(0);
@@ -52,21 +50,9 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
         toogleEditMode();
     }
 
-    const handleDescriptionChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-        let value:string = event.target.value;
-        props.task.description = value;
-        setChangeState(changeState + 1);
-        props.autoSave();
-    }
-
     const removeElement = () => {
         props.removeAction(props.task);
     }
-
-    const getDescription = (): string => {
-        if(props.task.description == "") return "No comments";
-        return props.task.description;
-    };
 
     const setPriority = (priority: "High" | "Medium" | "Low" | null) => {
         props.task.priority = priority;

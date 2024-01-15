@@ -4,10 +4,6 @@ import ToDoList from '../components/ToDoList';
 import { ToDoListModel } from '../models/ToDoList.model';
 import React, { useEffect } from 'react';
 
-type Props = {
-  newListEvent: () => void;
-}
-
 function App() {
 
   const [toDoListsDB, setToDoListsDB] = React.useState<Array<ToDoListModel>>();
@@ -35,7 +31,7 @@ function App() {
   const autoSave = (toDoListToSave: ToDoListModel) => {
     let index = toDoListsDB?.findIndex((toDoList) => toDoList.id === toDoListToSave.id);
     if(index !== undefined && index !== -1){
-      let newToDoLists = [...(toDoListsDB || [])]; // Add null check here
+      let newToDoLists = [...(toDoListsDB ?? [])]; // Add null check here
       newToDoLists[index] = toDoListToSave;
       setToDoListsDB(newToDoLists);
     }
