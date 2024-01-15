@@ -1,3 +1,5 @@
+import { useNavigate } from 'react-router-dom';
+import AddToDoList from '../components/AddToDoList';
 import ToDoList from '../components/ToDoList';
 import { ToDoListModel } from '../models/ToDoList.model';
 import React, { useEffect } from 'react';
@@ -8,43 +10,66 @@ type Props = {
 
 function App() {
 
-  const [toDoLists, setToDoLists] = React.useState<Array<ToDoListModel>>();
+  const [toDoListsDB, setToDoListsDB] = React.useState<Array<ToDoListModel>>();
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    if (!toDoLists) {
+    if (!toDoListsDB) {
       let data = localStorage.getItem("toDoLists");
       if (data) {
         let parsedData = JSON.parse(data);
-        setToDoLists(parsedData as Array<ToDoListModel>);
+        setToDoListsDB(parsedData as Array<ToDoListModel>);
       }
-      else setToDoLists([]);
+      else setToDoListsDB([]);
     }
     else {
-      localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
+      localStorage.setItem("toDoLists", JSON.stringify(toDoListsDB));
     }
-  }, [toDoLists]);
+  }, [toDoListsDB]);
 
   const removeToDoList = (toDoListToDelete: ToDoListModel) => {
-    setToDoLists(toDoLists?.filter((toDoList) => toDoList.id !== toDoListToDelete.id));
-    console.log(toDoLists);
+    setToDoListsDB(toDoListsDB?.filter((toDoList) => toDoList.id !== toDoListToDelete.id));
   };
 
   const autoSave = (toDoListToSave: ToDoListModel) => {
-    let index = toDoLists?.findIndex((toDoList) => toDoList.id === toDoListToSave.id);
+    let index = toDoListsDB?.findIndex((toDoList) => toDoList.id === toDoListToSave.id);
     if(index !== undefined && index !== -1){
-      let newToDoLists = [...(toDoLists || [])]; // Add null check here
+      let newToDoLists = [...(toDoListsDB || [])]; // Add null check here
       newToDoLists[index] = toDoListToSave;
-      setToDoLists(newToDoLists);
+      setToDoListsDB(newToDoLists);
     }
-    console.log(toDoLists);
   };
+
+  const addToDoList = (newToDoList: ToDoListModel) => {
+    let data = localStorage.getItem("toDoLists");
+    let toDoLists: ToDoListModel[] = [];
+    if (data) {
+        let parsedData = JSON.parse(data);
+        toDoLists = parsedData as Array<ToDoListModel>;
+    }
+
+    setToDoListsDB(toDoLists.concat(newToDoList));
+    // refresh
+    navigate(0)
+}
   
   return (
     <div className='body'>
       {
-        toDoLists?.map((toDoList) => (
+        toDoListsDB && toDoListsDB.length > 0 ?
+        toDoListsDB?.map((toDoList) => (
           <ToDoList key={toDoList.id} toDoList={toDoList} removeToDoList={removeToDoList} autoSave={autoSave}/>
-        ))
+        )):
+        <div className='d-flex flex-column align-items-center'>
+          <h1>Your session is empty !</h1>
+          <br />
+          <div className='d-flex'>
+            <h3 className='me-3'>Click here to create your first list :</h3>
+            <AddToDoList AddToDoMethod={addToDoList}/>
+          </div>
+          
+        </div>
       }
     </div>
   )

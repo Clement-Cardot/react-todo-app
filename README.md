@@ -58,4 +58,4 @@ npm run build
 ## Improvements
 - Make the Light/Dark mode property persistent
 - Add a search bar to the To-Do list view
-- ???
+- align tags in the To-Do list view

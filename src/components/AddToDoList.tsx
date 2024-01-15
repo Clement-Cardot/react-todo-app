@@ -22,7 +22,7 @@ const AddToDoList: React.FC<Props> = (props: Props) => {
         </button>
 
         <div className="modal fade" id="Modal" aria-labelledby="ModalLabel" aria-hidden="true">
-            <div className="modal-dialog">
+            <div className="modal-dialog" style={{maxWidth: '35%'}}>
                 <div className="modal-content">
                 <div className="modal-header">
                     <h1 className="modal-title fs-5" id="ModalLabel">Create To-Do List</h1>
