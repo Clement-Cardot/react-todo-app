@@ -193,3 +193,12 @@ button.accordion-button:focus{
 .no-css {
   all: unset;
 }
+
+.kanban-list {
+  height: calc(100% - 55px)!important;
+  overflow-y: auto;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}

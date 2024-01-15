@@ -2,31 +2,41 @@ import { DarkModeToggle, Mode } from "@anatoliygatt/dark-mode-toggle";
 import { ToDoListModel } from "../models/ToDoList.model";
 import AddToDoList from "./AddToDoList";
 import React, { useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
-
-const NavBar : React.FC = () => {
+function NavBar() {
 
     const [mode, setMode] = React.useState<Mode>('light');
 
-    const [toDoLists, setToDoLists] = React.useState<Array<ToDoListModel>>();
+    const [toDoListsDB, setToDoListsDB] = React.useState<Array<ToDoListModel>>();
+
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!toDoLists) {
-        let data = localStorage.getItem("toDoLists");
-        if (data) {
-            let parsedData = JSON.parse(data);
-            setToDoLists(parsedData as Array<ToDoListModel>);
-        }
-        else setToDoLists([]);
+        if (!toDoListsDB) {
+            let data = localStorage.getItem("toDoLists");
+            if (data) {
+                let parsedData = JSON.parse(data);
+                setToDoListsDB(parsedData as Array<ToDoListModel>);
+            }
+            else setToDoListsDB([]);
         }
         else {
-        localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
+            localStorage.setItem("toDoLists", JSON.stringify(toDoListsDB));
         }
-    }, [toDoLists]);
+    }, [toDoListsDB]);
 
     const addToDoList = (newToDoList: ToDoListModel) => {
-        setToDoLists(toDoLists?.concat(newToDoList));
-        console.log(toDoLists);
+        let data = localStorage.getItem("toDoLists");
+        let toDoLists: ToDoListModel[] = [];
+        if (data) {
+            let parsedData = JSON.parse(data);
+            toDoLists = parsedData as Array<ToDoListModel>;
+        }
+
+        setToDoListsDB(toDoLists.concat(newToDoList));
+        // refresh
+        navigate(0)
     }
 
     useEffect(() => {
@@ -35,7 +45,7 @@ const NavBar : React.FC = () => {
 
     return (
         <nav className="navbar navbar-expand-lg mb-3 ps-5 pe-5">
-                <a className="navbar-brand" href="#">✅</a>
+                <a className="navbar-brand" href="/">✅</a>
 
                 <ul className="navbar-nav flex-row me-auto">
                     <li className="nav-item me-3">

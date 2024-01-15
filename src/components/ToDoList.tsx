@@ -1,7 +1,7 @@
 import React from "react";
 import { TaskModel } from "../models/Task.model";
 import Task from "./Task";
-import AddToDo from "./AddTask";
+import AddTask from "./AddTask";
 import { ToDoListModel } from "../models/ToDoList.model";
 import ProgressSpan from "./ProgressSpan";
 
@@ -28,6 +28,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
     }
 
     const addToList = (task: TaskModel) => {
+        console.log("AddTask.tsx: handleClick(): checkForm() == true => TodoList.tsx: addToList()");
         props.toDoList.tasks.push(task);
         setChange(change + 1);
         if (props.autoSave) {
@@ -125,7 +126,7 @@ const ToDoList: React.FC<Props> = (props: Props) => {
                                 )
                             }
                             <li className="list-group-item">
-                                <AddToDo AddToDoMethod={addToList}/>
+                                <AddTask AddToDoMethod={addToList}/>
                             </li>
                         </ul>
                     </div>

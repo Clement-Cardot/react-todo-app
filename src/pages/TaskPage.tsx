@@ -39,7 +39,6 @@ function TaskPage() {
 
   const navigate = useNavigate();
 
-  
     let task = findTaskById(id!);
 
     if (task){
@@ -98,7 +97,11 @@ function TaskPage() {
                 <h2 className='card-title'>{task.title}</h2>
               </div>
               
-              <p className="card-text">{task.description}</p>
+              <p className="card-text"></p>
+              <div className="form-floating mb-3">
+                <textarea className="form-control" id="floatingTextarea2" defaultValue={task.description} onChange={handleDescriptionChange} ></textarea>
+                <label htmlFor="floatingTextarea2">Description</label>
+              </div>
 
               <div className="d-flex flex-row align-items-baseline">
                 <p className="me-1">Status :</p>

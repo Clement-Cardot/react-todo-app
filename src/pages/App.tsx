@@ -2,6 +2,10 @@ import ToDoList from '../components/ToDoList';
 import { ToDoListModel } from '../models/ToDoList.model';
 import React, { useEffect } from 'react';
 
+type Props = {
+  newListEvent: () => void;
+}
+
 function App() {
 
   const [toDoLists, setToDoLists] = React.useState<Array<ToDoListModel>>();
@@ -19,11 +23,6 @@ function App() {
       localStorage.setItem("toDoLists", JSON.stringify(toDoLists));
     }
   }, [toDoLists]);
-
-  // const addToDoList = (newToDoList: ToDoListModel) => {
-  //   setToDoLists(toDoLists?.concat(newToDoList));
-  //   console.log(toDoLists);
-  // }
 
   const removeToDoList = (toDoListToDelete: ToDoListModel) => {
     setToDoLists(toDoLists?.filter((toDoList) => toDoList.id !== toDoListToDelete.id));

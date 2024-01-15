@@ -27,13 +27,16 @@ const TaskCard : React.FC<Props> = (props: Props) => {
     return (
         <div className="card m-2">
             <div className="card-body">
-                <h5 className="card-title">{props.task.title}</h5>
+                <a className="no-css cursor-pointer" href={"/task/" + props.task.id}>
+                    <h5 className="card-title">{props.task.title}</h5>
+                </a>
+                
                 <div className="d-flex flex-row align-items-baseline">
-                    <p className="me-1">Priority :</p>
+                    <p className="me-1">Priority : </p>
                     <PrioritySelector actualPriority={props.task.priority} setPriority={setPriority}/>
                 </div>
                 <div className="d-flex flex-row align-items-baseline">
-                    <p className="me-1">Tag :</p>
+                    <p className="me-1">Tag : </p>
                     <TagSelector actualTag={props.task.tag} setTag={setTag}/>
                 </div>
                 

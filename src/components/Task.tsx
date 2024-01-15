@@ -5,7 +5,6 @@ import { Tag } from "../models/Tag.model";
 import PrioritySelector from "./PrioritySelector";
 import TagSelector from "./TagSelector";
 import KanbanSelector from "./KanbanSelector";
-import { Link } from "react-router-dom";
 
 type Props = {
     task: TaskModel;
@@ -137,11 +136,6 @@ const ToDoElement: React.FC<Props> = (props: Props) => {
                     <input type="email" className="form-control" id="floatingInput" defaultValue={props.task.title} onChange={handleTitleChange}/>
                     <label htmlFor="floatingInput">Task name</label>
                 </div>
-                <div className="form-floating mb-3">
-                    <textarea className="form-control" id="floatingTextarea2" defaultValue={props.task.description} onChange={handleDescriptionChange} ></textarea>
-                    <label htmlFor="floatingTextarea2">Comments</label>
-                </div>
-
                 <button className="btn btn-primary mb-3" onClick={toogleEditMode}>Submit</button>
             </>
         }

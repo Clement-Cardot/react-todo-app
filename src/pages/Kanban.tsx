@@ -125,7 +125,7 @@ function Kanban() {
                         <hr className="m-0"/>
                         <Droppable droppableId="todo">
                             { provided => (
-                                <div ref={provided.innerRef} {...provided.droppableProps} className="h-100">
+                                <div ref={provided.innerRef} {...provided.droppableProps} className="kanban-list">
                                     {
                                         toDoLists?.find((toDoList) => toDoList.id === toDoListId)?.tasks
                                             .filter((task) => task.status === "todo").map((task, index) => (
@@ -156,7 +156,7 @@ function Kanban() {
                         <hr className="m-0"/>
                         <Droppable droppableId="in-progress">
                             { provided => (
-                                <div ref={provided.innerRef} {...provided.droppableProps} className="h-100">
+                                <div ref={provided.innerRef} {...provided.droppableProps} className="kanban-list">
                                     {
                                         toDoLists?.find((toDoList) => toDoList.id === toDoListId)?.tasks
                                             .filter((task) => task.status === "in-progress").map((task, index) => (
@@ -186,7 +186,7 @@ function Kanban() {
                         <hr className="m-0"/>
                         <Droppable droppableId="testing">
                             { provided => (
-                                <div ref={provided.innerRef} {...provided.droppableProps} className="h-100">
+                                <div ref={provided.innerRef} {...provided.droppableProps} className="kanban-list">
                                     {
                                         toDoLists?.find((toDoList) => toDoList.id === toDoListId)?.tasks
                                             .filter((task) => task.status === "testing").map((task, index) => (
@@ -216,7 +216,7 @@ function Kanban() {
                         <hr className="m-0"/>
                         <Droppable droppableId="done">
                             { provided => (
-                                <div ref={provided.innerRef} {...provided.droppableProps} className="h-100">
+                                <div ref={provided.innerRef} {...provided.droppableProps} className="kanban-list">
                                     {
                                         toDoLists?.find((toDoList) => toDoList.id === toDoListId)?.tasks
                                             .filter((task) => task.status === "done").map((task, index) => (
